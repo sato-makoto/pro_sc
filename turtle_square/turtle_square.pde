@@ -3,38 +3,34 @@
 void setup() {
   size(800,600);
   background(0,0,0);
+  stroke(200,50,80);
 }
 
-int dict(int xy, int add_shift, int i)
-{
-  int i2;
-  if (i % 2  !=  0) {
-    i2 = i;
+int add_del(int i) {
+  if (i %2 == 1) {
+    return i;
   } else {
-    i2 = -i;
-  }
-  return xy + (add_shift * i2) ;
+    return i * -1;  }
 }
-
+    
 void draw() {
- int first_x = 400;
- int first_y = 300;
- int add_shift = 5;
- int x1 = first_x, y1 = first_y, x2 = first_x, y2 = first_y;
- int i; 
+  int x1, y1, x2, y2;
+  int x_init, y_init;
+  int add, i, last;
 
- stroke(200,50,80);
- x1 = first_x; y1 =first_y;
- for(i=1; i<101; i++) {
-   x2 = dict(x2, add_shift, i);
-   y2 = y1;
-   line(x1,y1, x2,y2);
-   /* println(i, x1, y1, x2, y2); */
-   x1 = x2; y1 = y2;
-   y2 = dict(y2, add_shift, i); 
-   line (x1, y1, x2, y2);
-   /* println(i,x1, y1, x2, y2); */
-   x1 =x2; y1 = y2;
- }
- save("square_turtle.png");
+  x_init = 400; y_init = 300;
+  x1 = x_init; y1 = y_init;
+  x2 = x_init; y2 = y_init;
+  add = 5; last = 101;
+    
+  for(i=1; i < last; i++){
+    x2 = x1 + add * add_del(i);
+    line(x1,y1,x2,y2);
+    x1 = x2; y1 = y2;
+    y2 = y1 + add * add_del(i);
+    line(x1,y1,x2,y2);
+    x1 = x2; y1 = y2;
+  }
+ 
+  save("square_turtle.png");
 }
