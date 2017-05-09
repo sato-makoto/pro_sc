@@ -25,7 +25,7 @@ void mycircle(int i, int r) {
   background(0,0,0);
   fill(0,0,0);
   ellipse(400,300, r, r);
-  String filename = "circle" + str(i) + ".jpg";
+  String filename = "circle" + nf(i,2) + ".jpg";
   save(filename);
 }
 
