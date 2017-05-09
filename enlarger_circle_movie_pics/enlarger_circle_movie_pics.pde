@@ -3,8 +3,6 @@ make 100 pices pictures(*.jpg)
 use below files and scripts
 
 $ ls *.jpg | sort -n >stills.txt
-(this files 1,10,11,12,...2,20,21..)
-(cannot  files 1,2, ... 11,12,..20)
 
 #!/bin/sh
 NAME=enlarge_`date "+%Y-%m-%d"`
