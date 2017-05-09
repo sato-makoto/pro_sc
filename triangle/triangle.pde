@@ -22,4 +22,5 @@ void draw (){
   angle += speed;
   scalar += speed;
   }
+  save("triangle.png");
 }
