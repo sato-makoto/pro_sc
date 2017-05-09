@@ -1,8 +1,6 @@
 /*
 make 100 pices pictures(*.jpg)
-use below files and scripts
-
-$ ls *.jpg | sort -n >stills.txt
+use below scripts
 
 #!/bin/sh
 NAME=enlarge_`date "+%Y-%m-%d"`
@@ -13,10 +11,13 @@ mencoder -nosound -ovc lavc -lavcopts vcodec=mpeg4:aspect=8/6:vbitrate=8000000 -
 ffmpeg -i ${NAME}.avi ${NAME}.mp4
 */
 
+PrintWriter w;
+
 void setup() {
   size(800,600);
   background(0,0,0);
   stroke(200,50,80);
+  w = createWriter("stills.txt");
 }
 
 void mycircle(int i, int r) {
@@ -25,10 +26,15 @@ void mycircle(int i, int r) {
   ellipse(400,300, r, r);
   String filename = "circle" + nf(i,2) + ".jpg";
   save(filename);
+  w.println(filename);
+  w.flush();
+
 }
 
 void draw() {
   for(int i=0; i<100; i++) {
     mycircle(i, i*4+150);
   }
+  w.close();
+  exit();
 }
