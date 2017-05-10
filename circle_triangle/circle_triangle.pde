@@ -33,10 +33,10 @@ void mydraw (float speed, int num) {
 }
 
 void draw() {
-  float speed = 0.0005;
-  for(int num = 0; num < 400; num++) {
-    mydraw(2 + speed, num);
-    speed += 0.0005;
+  float speed = 0.005;
+  for(int num = 0; num < 1000; num++) {
+    mydraw(0 + speed, num);
+    speed += 0.005;
   }
   w.close();
   exit();
