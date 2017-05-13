@@ -1,8 +1,12 @@
 float sizex = 800;
 int sizey = 600;
+PrintWriter w;
+
+
 void setup() {
   size(800, 600) ;
   background(0, 0, 0);
+  w = createWriter("frame/stills.txt");
 }
 
 void draw_line (int x, float y) {
@@ -10,7 +14,9 @@ void draw_line (int x, float y) {
   line(0, 300, x, 300);
   stroke(200, 100, 100);
   point(x, y);
-  save("frame/sine" + nf(x, 3) + ".tif");
+  save("frame/sine" + nf(x, 3) + ".jpg");
+  w.println("sine" + nf(x, 3) + ".jpg");
+  w.flush();
 }
 
 void draw() {
@@ -26,5 +32,6 @@ void draw() {
     ysin+=theta;
     draw_line(x, y);
   }
+  w.close();
   exit();
 }
