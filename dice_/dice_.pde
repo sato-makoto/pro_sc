@@ -1,11 +1,11 @@
 /*
 とりあえずは棒グラフの
-動画を描いてみた
-いかさまサイコロの
-シミュレーション
-5を除く1から6までの
-確率は1/7。
-5のみ2/7。
+ 動画を描いてみた
+ いかさまサイコロの
+ シミュレーション
+ 5を除く1から6までの
+ 確率は8/51(15.7%)。
+ 5のみ11/51(21.6%)
  */
 
 PrintWriter w;
@@ -20,11 +20,20 @@ void setup() {
 }
 
 int diving() {
-  int div = int(random(7));
-  if (div == 6) {
+  int div = int(random(51));
+  int first = 8;
+  if (div < first) {
+    return 0;
+  } else if (div < first * 2) {
+    return 1;
+  } else if (div < first * 3) {
+    return 2;
+  } else if (div < first * 4) {
     return 3;
+  } else if (div < first * 5 + 3 ) {
+    return 4;
   } else {
-    return div;
+    return 5;
   }
 }
 
@@ -36,17 +45,18 @@ void draw() {
   int x_marging = 50;
   int all_dice;
   int[]  dice  = {0, 0, 0, 0, 0, 0};
+  float multi = -15.0;
   stroke(200, 80, 50);
   strokeWeight(2);
   for (pic_num = 0; pic_num < 100; pic_num++) {
     dice[diving()] +=1;
     for (all_dice = 0; all_dice < 6; all_dice++) {
-      rect(x_orig + x_shift * all_dice, y_orig, x_marging, dice[all_dice]* -15);
+      rect(x_orig + x_shift * all_dice, y_orig, x_marging, dice[all_dice]* multi);
       save("frame/dice" + nf(pic_num, 3) + ".jpg");
     }
     w.println("dice" + nf(pic_num, 3) + ".jpg");
     w.flush();
   }
-  w.close();
-  exit();
+   w.close();
+   exit();
 }
