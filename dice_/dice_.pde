@@ -9,14 +9,47 @@
  */
 
 PrintWriter w;
+PFont font;
 
 void setup() {
   size(800, 600);
   background(0, 0, 0);
   stroke(50, 150, 80);
-  line(80, 80, 80, 550);
-  line(50, 500, 750, 500);
+  strokeWeight(3);
+  line(90, 80, 90, 550);
+  line(60, 500, 750, 500);
+
+
   w = createWriter("frame/stills.txt");
+  displaydice();
+  displayxline();
+  displaytitle();
+}
+
+void displaydice() {
+  font = loadFont("FreeMono-48.vlw");
+  textFont(font);
+  textSize(80);
+  int xshift = 0;
+  String [] dice = {"⚀", "⚁", "⚂", "⚃", "⚄", "⚅"};
+  for (int x = 0; x <6; x++) {
+    text(dice[x], 140+xshift, 560);
+    xshift += 100;
+  }
+}
+void displayxline () {
+  font = loadFont("IPAPMincho-48.vlw");
+  textFont(font);
+  textSize(20);
+  text("15%", 45, 320);
+  text("30%", 45, 140);
+}
+
+void displaytitle() {
+  font = loadFont("IPAPMincho-48.vlw");
+  textFont(font);
+  textSize(30);
+  text("いんちきなサイコロのシミュレーション", 200, 70);
 }
 
 int diving() {
@@ -39,15 +72,16 @@ int diving() {
 
 void draw() {
   int pic_num;
-  int x_orig = 120;
+  int x_orig = 140;
   int x_shift =100;
   int y_orig = 500;
   int x_marging = 50;
   int all_dice;
   int[]  dice  = {0, 0, 0, 0, 0, 0};
-  float multi = -15.0;
-  stroke(200, 80, 50);
-  strokeWeight(2);
+  float multi = -12.0;
+  fill(200, 80, 50);
+  stroke(255, 255, 255);
+  strokeWeight(1);
   for (pic_num = 0; pic_num < 100; pic_num++) {
     dice[diving()] +=1;
     for (all_dice = 0; all_dice < 6; all_dice++) {
@@ -57,6 +91,9 @@ void draw() {
     w.println("dice" + nf(pic_num, 3) + ".jpg");
     w.flush();
   }
-   w.close();
-   exit();
+  w.close();
+  for (int x=0; x<6; x++) {
+    println(dice[x]);
+  }
+  exit();
 }
