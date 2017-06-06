@@ -6,6 +6,9 @@
  5を除く1から6までの
  確率は8/51(15.7%)。
  5のみ11/51(21.6%)
+ 1000回繰り返し
+ 10回に1回画像として保存
+ 最後の1回も保存
  */
 
 PrintWriter w;
@@ -78,17 +81,19 @@ void draw() {
   int x_marging = 50;
   int all_dice;
   int[]  dice  = {0, 0, 0, 0, 0, 0};
-  float multi = -12.0;
+  float multi = -1.2;
   fill(200, 80, 50);
   stroke(255, 255, 255);
   strokeWeight(1);
-  for (pic_num = 0; pic_num < 100; pic_num++) {
+  for (pic_num = 0; pic_num < 1000; pic_num++) {
     dice[diving()] +=1;
     for (all_dice = 0; all_dice < 6; all_dice++) {
       rect(x_orig + x_shift * all_dice, y_orig, x_marging, dice[all_dice]* multi);
-      save("frame/dice" + nf(pic_num, 3) + ".jpg");
     }
-    w.println("dice" + nf(pic_num, 3) + ".jpg");
+    if (pic_num%10==0 || pic_num==999 ) {
+      save("frame/dice" + nf(pic_num, 3) + ".jpg");
+      w.println("dice" + nf(pic_num, 3) + ".jpg");
+    }
     w.flush();
   }
   w.close();
