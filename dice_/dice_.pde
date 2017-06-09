@@ -52,11 +52,13 @@ void displaytitle() {
   font = loadFont("IPAPMincho-48.vlw");
   textFont(font);
   textSize(30);
-  text("いんちきなサイコロのシミュレーション", 200, 70);
+  text("いんちきでないサイコロのシミュレーション", 180, 70);
 }
 
+// このブランチはいんちきを除いた
+
 int diving() {
-  int div = int(random(51));
+  int div = int(random(48));
   int first = 8;
   if (div < first) {
     return 0;
@@ -66,7 +68,7 @@ int diving() {
     return 2;
   } else if (div < first * 4) {
     return 3;
-  } else if (div < first * 5 + 3 ) {
+  } else if (div < first * 5) {
     return 4;
   } else {
     return 5;
