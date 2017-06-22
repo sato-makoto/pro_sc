@@ -10,7 +10,7 @@ void draw() {
   noFill();
 
 
-  strokeWeight(1.5);
+  strokeWeight(3);
   int times = 0;
   for (float r = 300; r>10; r-=15)
   {
