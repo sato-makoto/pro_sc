@@ -1,10 +1,13 @@
+/*
+ 1000回さいころを振る毎に
+ さいころのインチキ度を上げる
+ シミュレーション
+ */
+
+// jpgファイル名を記述した
+// ファイル作成
 PrintWriter w;
 PFont font;
-/*
-つくりかけ
- 1000回さいころを振る毎に
- さいころのインチキ度を上げてゆく予定
- */
 
 void setup() {
   size(800, 600);
@@ -12,7 +15,7 @@ void setup() {
   w = createWriter("frame/stills.txt");
 }
 
-
+// さいころの目を描画する
 void displaydice() {
   font = loadFont("FreeMono-48.vlw");
   textFont(font);
@@ -28,12 +31,14 @@ void displaydice() {
   text("⚀,⚁,⚂,⚃,⚅", 200, 180);
 }
 
+// グラフの枠を描画
 void displayxline () {
   stroke(50, 150, 80);
   strokeWeight(3);
   line(90, 80, 90, 550);
   line(60, 500, 750, 500); 
 
+// 目盛り
   font = loadFont("IPAPMincho-48.vlw");
   textFont(font);
   textSize(20);
@@ -41,6 +46,7 @@ void displayxline () {
   text("300", 40, 140);
 }
 
+// タイトルを描画
 void displaytitle() {
   font = loadFont("IPAPMincho-48.vlw");
   textFont(font);
@@ -48,12 +54,14 @@ void displaytitle() {
   text("いんちきが増してゆくシミュレーション", 200, 70);
 }
 
+// 1,2,3,4,6の目が出る確率計算
 float divnum(float ratio) {
   float divnum = (1000 - (1000 * ratio))/5;
   return divnum;
 }
 
 void mydisplay(float ratio, int picnum) {
+// いんちきの確率を表示
   font = loadFont("IPAPMincho-48.vlw");
   textSize(20);
   float percent = float(round(ratio * 1000))/10;
@@ -61,6 +69,7 @@ void mydisplay(float ratio, int picnum) {
   float rest_percent = float(round((1 - ratio)/5 * 1000))/10;
   text("= " + rest_percent + "%", 430, 177);
 
+// 棒グラフのデータ
   int [] dice = {0, 0, 0, 0, 0, 0};
   float div = divnum(ratio);
   for (int x = 0; x < 1000; x++) {
@@ -84,6 +93,9 @@ void mydisplay(float ratio, int picnum) {
   //  for (int x = 0; x <6; x++) {
   //    println(dice[x]);
   //  }
+
+  // 棒グラフ作成、jpg形式で保存
+  // ファイル名のリストに追記
   int x_orig = 140;
   int x_shift =100;
   int y_orig = 500;
@@ -101,7 +113,6 @@ void mydisplay(float ratio, int picnum) {
 }
 
 void draw() {
-
   int time = 1;
   for (float ratio = 0.1667; ratio < 0.24; ratio+=0.002) {
     displaydice();
