@@ -38,7 +38,7 @@ void displayxline () {
   line(90, 80, 90, 550);
   line(60, 500, 750, 500); 
 
-// 目盛り
+  // 目盛り
   font = loadFont("IPAPMincho-48.vlw");
   textFont(font);
   textSize(20);
@@ -52,6 +52,8 @@ void displaytitle() {
   textFont(font);
   textSize(30);
   text("いんちきが増してゆくシミュレーション", 200, 70);
+  text("1000回ごとに確率を変更", 200,110);
+
 }
 
 // 1,2,3,4,6の目が出る確率計算
@@ -61,7 +63,7 @@ float divnum(float ratio) {
 }
 
 void mydisplay(float ratio, int picnum) {
-// いんちきの確率を表示
+  // いんちきの確率を表示
   font = loadFont("IPAPMincho-48.vlw");
   textSize(20);
   float percent = float(round(ratio * 1000))/10;
@@ -69,7 +71,7 @@ void mydisplay(float ratio, int picnum) {
   float rest_percent = float(round((1 - ratio)/5 * 1000))/10;
   text("= " + rest_percent + "%", 430, 177);
 
-// 棒グラフのデータ
+  // 棒グラフのデータ
   int [] dice = {0, 0, 0, 0, 0, 0};
   float div = divnum(ratio);
   for (int x = 0; x < 1000; x++) {
