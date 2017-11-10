@@ -53,6 +53,14 @@ void displaytitle() {
   textFont(font);
   textSize(30);
   text("いんちきなサイコロのシミュレーション", 200, 70);
+  text("= 15.7%(8/51)",450,120 );
+  text("= 21.6%(11/51)",230,170 );
+  text("回数:", 200, 220);
+  font = loadFont("FreeMono-48.vlw");
+  textFont(font);
+  textSize(30);
+  text("⚀, ⚁, ⚂, ⚃, ⚅", 200,120);
+  text("⚄", 200, 170);
 }
 
 int diving() {
@@ -82,15 +90,26 @@ void draw() {
   int all_dice;
   int[]  dice  = {0, 0, 0, 0, 0, 0};
   float multi = -1.2;
-  fill(200, 80, 50);
+
   stroke(255, 255, 255);
   strokeWeight(1);
-  for (pic_num = 0; pic_num < 1000; pic_num++) {
+  font = loadFont("IPAPMincho-48.vlw");
+  textFont(font);
+ 
+  for (pic_num = 1; pic_num <= 1000; pic_num++) {
+    stroke(0);
+    fill(0,0,0);
+    rect(270,180,100,60); 
+    stroke(255);
+    textSize(30);
+    fill(255, 255, 255);
+    text(pic_num, 280, 220);
+    fill(200, 80, 50);
     dice[diving()] +=1;
     for (all_dice = 0; all_dice < 6; all_dice++) {
       rect(x_orig + x_shift * all_dice, y_orig, x_marging, dice[all_dice]* multi);
     }
-    if (pic_num%10==0 || pic_num==999 ) {
+    if (pic_num%10==1 || pic_num==1000 ) {
       save("frame/dice" + nf(pic_num, 3) + ".jpg");
       w.println("dice" + nf(pic_num, 3) + ".jpg");
     }
