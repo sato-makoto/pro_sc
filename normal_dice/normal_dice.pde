@@ -1,11 +1,8 @@
 /*
 とりあえずは棒グラフの
  動画を描いてみた
- いかさまサイコロの
+ サイコロの
  シミュレーション
- 5を除く1から6までの
- 確率は8/51(15.7%)。
- 5のみ11/51(21.6%)
  1000回繰り返し
  10回に1回画像として保存
  最後の1回も保存
@@ -52,33 +49,19 @@ void displaytitle() {
   font = loadFont("IPAPMincho-48.vlw");
   textFont(font);
   textSize(30);
-  text("いんちきなサイコロのシミュレーション", 200, 70);
-  text("= 15.7%(8/51)",450,120 );
-  text("= 21.6%(11/51)",230,170 );
-  text("回数:", 200, 220);
+  text("まっとうなサイコロのシミュレーション", 200, 70);
+  text("= 16.7%(1/6)",500,120 );
+  text("回数:", 200, 170);
+
   font = loadFont("FreeMono-48.vlw");
   textFont(font);
   textSize(30);
-  text("⚀, ⚁, ⚂, ⚃, ⚅", 200,120);
-  text("⚄", 200, 170);
+  text("⚀, ⚁, ⚂, ⚃, ⚅, ⚄", 200, 120);
 }
 
 int diving() {
-  int div = int(random(51));
-  int first = 8;
-  if (div < first) {
-    return 0;
-  } else if (div < first * 2) {
-    return 1;
-  } else if (div < first * 3) {
-    return 2;
-  } else if (div < first * 4) {
-    return 3;
-  } else if (div < first * 5 + 3 ) {
-    return 4;
-  } else {
-    return 5;
-  }
+  return int(random(6));
+  
 }
 
 void draw() {
@@ -90,20 +73,22 @@ void draw() {
   int all_dice;
   int[]  dice  = {0, 0, 0, 0, 0, 0};
   float multi = -1.2;
-
   stroke(255, 255, 255);
   strokeWeight(1);
   font = loadFont("IPAPMincho-48.vlw");
   textFont(font);
- 
+
+  fill(200, 80, 50);
+  stroke(255, 255, 255);
+  strokeWeight(1);
   for (pic_num = 1; pic_num <= 1000; pic_num++) {
     stroke(0);
     fill(0,0,0);
-    rect(270,180,100,60); 
+    rect(280,140,100,40); 
     stroke(255);
     textSize(30);
     fill(255, 255, 255);
-    text(pic_num, 280, 220);
+    text(pic_num, 280, 170);
     fill(200, 80, 50);
     dice[diving()] +=1;
     for (all_dice = 0; all_dice < 6; all_dice++) {
