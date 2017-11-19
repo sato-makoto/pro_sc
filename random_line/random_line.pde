@@ -9,18 +9,20 @@ void setup()
   background(0,0,0);
   fill(100,200,100);
   stroke(100,200,100);
-
 }
 
 int oldx = 0;
 int oldy = 0;
 int i = 0;
+int times = 1000;
+int delay = 50;
 
 void draw() {
   int x;
   int y;
-  if (i == 1000)
+  if (i == times)
   {
+  println("end");
   noLoop();
   }
 
@@ -30,6 +32,6 @@ void draw() {
     line(oldx,oldy,x,y);
     oldx = x;
     oldy = y;
-    delay(200);
+    delay(delay);
     i++;
 }
