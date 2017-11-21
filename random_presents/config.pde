@@ -7,6 +7,27 @@ void initconf() {
   w = createWriter("frame/stills.txt");
 }
 
+void redline(){
+  stroke(220,50,80);
+  strokeWeight(1);
+  line(80,350,750,350);
+}
+/* check
+void total() {
+  int all = 0;
+  for(int i=0; i<10; i++){
+  all = all + people[i];
+  }
+  println(all);
+}
+*/
 
 // global
-int[]  people  = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10};
+int[]  people  = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
+int x_orig = 100;
+int pic_num;
+int x_shift = 50;
+int y_orig = 500;
+int y_shift = 0;
+int x_margin = 65;
+float multi = -1.5;

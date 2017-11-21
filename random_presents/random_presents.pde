@@ -11,8 +11,11 @@ void setup() {
 }
 
 void draw() {
-  for(int i=0; i<1000; i++) {
+  int last = 2000;
+  for(int i=0; i<last; i++) {
     present();
-    println(i);
+    save_picture(i, last);
   }
+  w.close();
+  println("2000 times!");
 }

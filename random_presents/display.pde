@@ -25,20 +25,26 @@ void display_players() {
   }
 }
 
-int x_orig = 100;
-int pic_num;
-int x_shift =50;
-int y_orig = 500;
-int y_first = -100;
-int y_shift = 0;
-int x_margin = 65;
-float multi = -1.2;
+void save_picture(int i, int last){
+  if (i%10==1 || i==last ) {
+    save("frame/present" + nf(i, 3) + ".jpg");
+    w.println("present" + nf(i, 3) + ".jpg");
+  }
+    w.flush();
+}
 
 void present() {
   for(int x=0; x<10; x++)
   {
+    redline();
+    stroke(0,0,0);
+    fill(0,0,0);
+    rect(x_orig+x_margin*x, y_orig, x_shift, multi*people[x]);
+    stroke(50,150,80);
+    fill(50,150,80);
     people[x]-=1;
     people[int(random(10))]+=1;
-    rect(x_orig+x_margin*x, y_orig, x_shift, y_first-people[x]);
-  }
+    rect(x_orig+x_margin*x, y_orig, x_shift, multi*people[x]);
+//    total();
+    }
 }
