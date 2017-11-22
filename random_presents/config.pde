@@ -6,7 +6,7 @@ void initconf() {
   line(60, 500, 750, 500);
   w = createWriter("frame/stills.txt");
 }
-
+// 初期値の高さに赤い横線
 void redline(){
   stroke(220,50,80);
   strokeWeight(1);
@@ -23,11 +23,12 @@ void total() {
 */
 
 // global
-int[]  people  = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
+int[] people = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
 int x_orig = 100;
 int pic_num;
 int x_shift = 50;
 int y_orig = 500;
 int y_shift = 0;
 int x_margin = 65;
+int present_times = 1000;
 float multi = -1.5;
