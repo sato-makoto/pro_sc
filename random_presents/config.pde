@@ -30,5 +30,6 @@ int x_shift = 50;
 int y_orig = 500;
 int y_shift = 0;
 int x_margin = 65;
-int present_times = 1000;
+int first = 0;
+int present_times = 2000;
 float multi = -1.5;

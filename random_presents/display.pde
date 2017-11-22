@@ -23,9 +23,22 @@ void displaytimes(int i)
   String cycle = "贈与サイクル " + i + " 回目";
   stroke(0,0,0);
   fill(0,0,0);
-  rect(190,75,240,35);
+  rect(190,75,320,70);
   fill(255,255,255);
   text(cycle, 200,100);
+}
+
+void display_amounts() {
+  int max = max(people);
+  int min = min(people);
+  int deg = max - min;
+  font = loadFont("IPAPMincho-48.vlw");
+  textFont(font);
+  textSize(20);
+  String amount = "最大: " + max + "  最小: "+ min + "  格差: " + deg;
+  stroke(255,255,255);
+  fill(255,255,255);
+  text(amount, 200,130);
 }
 
 void display_players() {
@@ -41,11 +54,9 @@ void display_players() {
 }
 
 void save_picture(int i, int last){
-//  if (i%10==1 || i==last ) {
-    save("frame/present" + nf(i, 3) + ".jpg");
-    w.println("present" + nf(i, 3) + ".jpg");
-//  }
-    w.flush();
+  save("frame/present" + nf(i, 4) + ".jpg");
+  w.println("present" + nf(i, 4) + ".jpg");
+  w.flush();
 }
 
 /*
@@ -63,6 +74,7 @@ int present_another(int p) {
 void present() {
   for(int x=0; x<10; x++)
   {
+    /* 描画削除 */
     stroke(0,0,0);
     fill(0,0,0);
     /* A が100を下回ったとき枠線が消えないバグ対応 */
@@ -71,6 +83,7 @@ void present() {
     } else {
       rect(x_orig+x_margin*x, y_orig, x_shift, multi*people[x]);
     }
+    /* 棒グラフ描画 */
     stroke(50,150,80);
     fill(50,150,80);
     people[x]-=1;

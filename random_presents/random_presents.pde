@@ -12,9 +12,10 @@ void setup() {
 
 void draw() {
   int last = present_times;
-  for(int i=0; i<last; i++) {
+  for(int i=first; i<last; i++) {
     present();
     displaytimes(i);
+    display_amounts();
     save_picture(i, last);
   }
   w.close();
