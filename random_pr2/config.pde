@@ -6,6 +6,17 @@ void initconf() {
   line(60, 500, 750, 500);
   w = createWriter("frame/stills.txt");
 }
+// Intによる連想配列?
+IntDict mkplist()
+{
+  IntDict plist;
+  plist = new IntDict();
+  for (String x : dice) {
+    plist.set(x, 100);
+  }
+  return plist;
+}
+
 // 初期値の高さに赤い横線
 void redline(){
   stroke(220,50,80);
@@ -23,6 +34,7 @@ void total() {
 */
 
 // global
+String [] dice = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
 int[] people = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
 int x_orig = 110;
 int pic_num;

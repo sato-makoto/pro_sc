@@ -46,7 +46,7 @@ void display_players() {
   textFont(font);
   textSize(30);
   int xshift = 0;
-  String [] dice = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+//  String [] dice = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
   for (int x = 0; x <10; x++) {
     text(dice[x], 120+xshift, 540);
     xshift += 60;
