@@ -11,7 +11,6 @@ void displaytitle() {
 }
 // 回数表示、黒い四角で塗りつぶして削除し、その後に描画
 void displaytimes(int i){
-  i+=1;
   font = loadFont("IPAPMincho-48.vlw");
   textFont(font);
   textSize(20);
@@ -49,7 +48,7 @@ void display_players(String[] str) {
 
 // $DIR/frame/present0000.jpg, etc
 // add filename to stills.txt
-void save_picture(int i, int last){
+void save_picture(int i){
   save("frame/present" + nf(i, 4) + ".jpg");
   w.println("present" + nf(i, 4) + ".jpg");
   w.flush();
@@ -66,7 +65,7 @@ String present_a2(String from) {
   }
   return another;
 }
-
+// 贈与サイクル
 // ランダムな相手に 1 ずつ贈り物
 // この関数で、全員が1回ずつ行う
 // 昇順でソート
@@ -89,8 +88,9 @@ void displaygraph(IntDict plist) {
   int [] mem = plist.valueArray();
   for(int x = first; x < members; x++)  {
     black();
+    // 左端にあたったメンバーの棒グラフ塗りつぶしだけがあまりうまくできない対策
     if (x == 0) {
-      rect(x_orig-1, y_orig, x_shift+2, multi*mem[x]-10);
+      rect(x_orig-1, y_orig-4, x_shift+2, multi*mem[x]-10);
     } else {
       rect(x_orig+x_margin*x, y_orig, x_shift, multi*mem[x]-10);
     }
@@ -103,8 +103,10 @@ void displaygraph(IntDict plist) {
 
 // 右端に格差表示
 void disparity(IntDict plist) {
+  black();
+  rect(710, y_orig-3, x_shift, 200*multi+2);
   stroke(200,0,100);
   fill(200,0,100);
   int [] mmd = max_min_deg(plist);
-  rect(710, y_orig, x_shift, mmd[2]*multi);
+  rect(710, y_orig-2, x_shift, mmd[2]*multi);
 }

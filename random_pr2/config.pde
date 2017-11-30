@@ -50,5 +50,6 @@ int y_orig = 500;
 int y_shift = 0;
 int x_margin = 60;
 int first = 0;
-int present_times = 4;
+// 贈与サイクルの繰り返し回数+1
+int present_times = 1001;
 float multi = -1.5;
