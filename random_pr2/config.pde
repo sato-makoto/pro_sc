@@ -7,8 +7,7 @@ void initconf() {
   w = createWriter("frame/stills.txt");
 }
 // Intによる連想配列?
-IntDict mkplist()
-{
+IntDict mkplist(){
   IntDict plist;
   plist = new IntDict();
   for (String x : dice) {
@@ -17,31 +16,39 @@ IntDict mkplist()
   return plist;
 }
 
+// 最大、最小、格差を収めたint型の配列を返す
+int [] max_min_deg(IntDict plist){
+  int [] mmd ;
+  mmd = new int[3];
+  mmd[0] = max(plist.valueArray());
+  mmd[1] = min(plist.valueArray());
+  mmd[2] = (mmd[0] - mmd[1]);
+  return mmd;
+}
 // 初期値の高さに赤い横線
 void redline(){
   stroke(220,50,80);
   strokeWeight(1);
   line(80,350,750,350);
 }
-/* check
-void total() {
-  int all = 0;
-  for(int i=0; i<10; i++){
-  all = all + people[i];
-  }
-  println(all);
-}
-*/
 
-// global
+void black() {
+  stroke(0,0,0);
+  fill(0,0,0);
+}
+void white(){
+  stroke(255,255,255);
+  fill(255,255,255);
+}
+
+// global imutable parameters
 String [] dice = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
-int[] people = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
+int members = 10;
 int x_orig = 110;
-int pic_num;
 int x_shift = 35;
 int y_orig = 500;
 int y_shift = 0;
 int x_margin = 60;
 int first = 0;
-int present_times = 2;
+int present_times = 4;
 float multi = -1.5;

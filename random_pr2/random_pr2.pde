@@ -4,21 +4,22 @@ PFont font;
 void setup() {
   size(800, 600);
   initconf();
-  display_players();
-  displayxline();
   displaytitle();
   noLoop();
 }
 
 void draw() {
   int last = present_times;
+  IntDict atoz = mkplist();
   for(int i=first; i<last; i++) {
-    present();
+    present_and_sort(atoz);
+    intdic_display(atoz);
     displaytimes(i);
-    display_amounts();
-    disparity();
+    display_amounts(atoz);
+    disparity(atoz);
+    displaygraph(atoz);
     save_picture(i, last);
   }
   w.close();
-  println(present_times, "times!");
+  println(atoz);
 }
