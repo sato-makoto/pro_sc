@@ -5,6 +5,9 @@ void initconf() {
   line(90, 80, 90, 550);
   line(60, 500, 750, 500);
   w = createWriter("frame/stills.txt");
+  frameRate(30);
+  atoz = new IntDict();
+  atoz = mkplist();
 }
 // Intによる連想配列?
 IntDict mkplist(){
@@ -50,6 +53,6 @@ int y_orig = 500;
 int y_shift = 0;
 int x_margin = 60;
 int first = 0;
-// 贈与サイクルの繰り返し回数+1
-int present_times = 1001;
+// 贈与サイクルの繰り返し回数
+int present_times = 1000;
 float multi = -1.5;
