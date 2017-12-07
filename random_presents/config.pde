@@ -12,6 +12,15 @@ void redline(){
   strokeWeight(1);
   line(80,350,750,350);
 }
+
+void black() {
+  stroke(0,0,0);
+  fill(0,0,0);
+}
+void white() {
+  stroke(255,255,255);
+  fill(255,255,255);
+}
 /* check
 void total() {
   int all = 0;
@@ -24,12 +33,12 @@ void total() {
 
 // global
 int[] people = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
-int x_orig = 100;
+int x_orig = 110;
 int pic_num;
-int x_shift = 50;
+int x_shift = 30;
 int y_orig = 500;
 int y_shift = 0;
-int x_margin = 65;
+int x_margin = 60;
 int first = 0;
-int present_times = 2000;
+int present_times = 1000;
 float multi = -1.5;

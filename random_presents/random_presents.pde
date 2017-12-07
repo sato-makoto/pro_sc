@@ -7,17 +7,18 @@ void setup() {
   display_players();
   displayxline();
   displaytitle();
-  noLoop();
 }
-
+int i = 0;
 void draw() {
-  int last = present_times;
-  for(int i=first; i<last; i++) {
+  if(i < present_times) {
     present();
     displaytimes(i);
     display_amounts();
-    save_picture(i, last);
+    save_picture(i, present_times);
+    i+=1;
+  } else {
+    noLoop();
+    w.close();
+    println(present_times, "times!");
   }
-  w.close();
-  println(present_times, "times!");
 }

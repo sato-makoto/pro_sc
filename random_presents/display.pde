@@ -35,10 +35,19 @@ void display_amounts() {
   font = loadFont("IPAPMincho-48.vlw");
   textFont(font);
   textSize(20);
-  String amount = "最大: " + max + "  最小: "+ min + "  格差: " + deg;
+  String amount = "最大: " + max + "  最小: "+ min + "  格差※: " + deg;
   stroke(255,255,255);
   fill(255,255,255);
   text(amount, 200,130);
+}
+
+void display_deg() {
+  int deg = max(people) - min(people);
+  black();
+  rect(710,y_orig-4,x_shift,-500);
+  stroke(200,100,100);
+  fill(200,50,100);
+  rect(710,y_orig-3,x_shift,multi*(deg-3));
 }
 
 void display_players() {
@@ -46,10 +55,10 @@ void display_players() {
   textFont(font);
   textSize(30);
   int xshift = 0;
-  String [] dice = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
-  for (int x = 0; x <10; x++) {
+  String [] dice = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "※"};
+  for (int x = 0; x <11; x++) {
     text(dice[x], 120+xshift, 540);
-    xshift += 65;
+    xshift += 60;
   }
 }
 
@@ -89,8 +98,7 @@ void present() {
     people[x]-=1;
     people[present_another(people[x])]+=1;
     rect(x_orig+x_margin*x, y_orig, x_shift, multi*people[x]);
+    display_deg();
     redline();
-
-//    total();
     }
 }
