@@ -32,6 +32,8 @@ void total() {
 */
 
 // global
+String [] dice = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "※"};
+String [] dice2 = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
 int[] people = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
 int x_orig = 110;
 int pic_num;

@@ -14,6 +14,7 @@ void draw() {
     present();
     displaytimes(i);
     display_amounts();
+    println();
     save_picture(i, present_times);
     i+=1;
   } else {
