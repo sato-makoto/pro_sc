@@ -10,9 +10,10 @@ void setup() {
 
 int all = 0;
 void draw() {
-  if(all < 100) {
+  if(all < present_times) {
     present_and_sort(atoz);
     all_circle(atoz);
+    display_times(all);
     all += 1;
   } else {
     println(atoz);

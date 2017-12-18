@@ -15,7 +15,7 @@ void draw() {
     displaytimes(i);
     display_amounts();
     println();
-    save_picture(i, present_times);
+//    save_picture(i, present_times);
     i+=1;
   } else {
     noLoop();

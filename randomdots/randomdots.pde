@@ -1,13 +1,24 @@
 void setup() {
-  size(400, 300) ;
+  background(0);
+  size(800, 600) ;
+  stroke(255);
 }
 
+int i = 0;
+void display() {
+      ellipse(int(random(width)),int(random(height)),2,2);
+}
+ 
+
 void draw() {
-  for (int x=1; x<=400; x++) {
-    for (int y=1; y<=300; y++) {
-      stroke(random(256), random(256), random(256));
-      point(x, y);
+  if (i < 5000) {
+    display();
+    i+=1;
+    if (i%100==0) {
+      println(i);
     }
+  }else{
+    println("end");
+    noLoop();
   }
-  noLoop();
 }

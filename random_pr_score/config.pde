@@ -1,11 +1,8 @@
 // 初期実行処理
 void init() {
   background(0,0,0);
-  frameRate(2);
-
-
   w = createWriter("frame/stills.txt");
-  frameRate(30);
+  frameRate(20);
   atoz = new IntDict();
   atoz = mkplist();
 }
@@ -13,19 +10,20 @@ void init() {
 void lines() {
   // 横線
     stroke(50,50,50);
-    for(int h = 50; h < 501; h+=50) {
-      line(50,h, 750,h);
+    for(int y = first_y; y < 501; y+=shift_y) {
+      line(50,y, 750,y);
     }
   // 縦線
-    stroke(0,0,200);
+    stroke(0,0,100);
     for(int w = 60; w < 800; w+=75)
     {
       line(w, 50, w, 500);
     }
     //中央線(赤)
-    stroke(100,0,0);
+/*    stroke(100,0,0);
     line(20,275,780,275);
     line(400,20,400,580);
+*/
 }
 
 // Intによる連想配列?
@@ -49,8 +47,6 @@ int indexing(IntDict plist, String n) {
   }
   return i;
 }
-
-
 
 // 最大、最小、格差を収めたint型の配列を返す
 int [] max_min_deg(IntDict plist){

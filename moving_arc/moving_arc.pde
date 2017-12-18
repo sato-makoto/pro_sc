@@ -1,4 +1,4 @@
-// Processingをはじめよう 
+// Processingをはじめよう
 // by Casey Reas and Ben Fry
 // オライリージャパン 2011
 // Page.95 変更
@@ -26,10 +26,10 @@ void draw() {
   fill(220,20,60);
   ellipse(x+5,30, 2, 2);
   fill(255,255,255);
-  saveFrame("frames/######.tif"); 
+  saveFrame("frames/######.tif");
   } else {
     delay(2000);
     exit();
   }
-  
+
 }

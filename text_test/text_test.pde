@@ -29,4 +29,5 @@ void draw() {
   textSize(18);
   text("That's one small step for man...", 27, 90);
   save("small_step.png");
+  noLoop();
 }

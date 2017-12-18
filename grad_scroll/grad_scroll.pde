@@ -1,6 +1,7 @@
 PrintWriter w;
 void setup() {
   size(1200, 200);
+//  frameRate(2);
   w = createWriter("frame/stills.txt");
 }
 
@@ -26,7 +27,7 @@ int dec(int x, int rate) {
 
 void mydraw(int shift_x) {
   int x = 1 + shift_x;
-  int rate; 
+  int rate;
   while (x <= 1200) {
     rate = 0;
     x = inc(x, rate);
@@ -35,8 +36,22 @@ void mydraw(int shift_x) {
   }
 }
 
+int pic_num = 1;
+int shift_x = 0;
 void draw() {
-  int pic_num = 1;
+  if(shift_x < 500) {
+    mydraw(shift_x*-4);
+//    save("frame/scroll" + nf(pic_num, 3) + ".jpg");
+//     w.println("scroll" + nf(pic_num, 3) + ".jpg");
+    w.flush();
+  } else {
+    w.close();
+    noLoop();
+    println("OK");
+  }
+    pic_num++;
+    shift_x +=1;
+/*
   for (int shift_x = 0; shift_x<64; shift_x++) {
     mydraw(shift_x*-4);
     save("frame/scroll" + nf(pic_num, 3) + ".jpg");
@@ -44,7 +59,6 @@ void draw() {
     w.flush();
     pic_num++;
   }
-  w.close();
-  println("OK");
-  exit();
+*/
+
 }
